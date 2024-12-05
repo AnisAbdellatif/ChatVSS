@@ -19,7 +19,7 @@ public class ChatClient {
         }
     }
 
-    public void start() throws IOException, InterruptedException {
+	public void start() throws IOException, InterruptedException {
         System.out.println("Congratulation for successfully setting up your environment for Assignment 1!");
 
         // Define the IP and port
@@ -60,48 +60,63 @@ public class ChatClient {
             // Assignment01 Tests
             /*
             // TEST 1
-            outQueue.put(new Message.ChatMessage(userId, "TEST 1 USER ID CORRECTNESS"));
-
-            Thread.sleep(1000);
+            if (false) {
+            	System.out.println("RUNNING TEST1!");
+            	ms.send(new MessageWrapper(NetClient.SocketType.TCP, tcpc.remoteAddr, tcpc.remotePort, new Message.ChatMessage(userId, "TEST 1 USER ID CORRECTNESS")));
+            	Thread.sleep(1000);            	
+            }
             
             // TEST 2
-        	outQueue.put(new Message.ChatMessage(userId, "TEST 2 OUT OF BAND PROTOCOL MESSAGE"));
-
-        	Thread.sleep(1000);
+            if (false) {
+            	System.out.println("RUNNING TEST1!");
+            	ms.send(new MessageWrapper(NetClient.SocketType.TCP, tcpc.remoteAddr, tcpc.remotePort, new Message.ChatMessage(userId, "TEST 2 OUT OF BAND PROTOCOL MESSAGE")));
+            	Thread.sleep(1000);            	
+            }
         	
             // TEST 3
-            outQueue.put(new Message.ChatMessage(userId, "TEST 3 EXCEEDING MAX MESSAGE LENGTH"));
-
-            Thread.sleep(1000);
+            if (false) {
+            	System.out.println("RUNNING TEST1!");
+            	ms.send(new MessageWrapper(NetClient.SocketType.TCP, tcpc.remoteAddr, tcpc.remotePort, new Message.ChatMessage(userId, "TEST 3 EXCEEDING MAX MESSAGE LENGTH")));
+            	Thread.sleep(1000);            	
+            }
             
             // TEST 4
-            outQueue.put(new Message.ChatMessage(userId, "TEST 4 HANDLING ERROR MESSAGE"));
-            
-            Thread.sleep(1000);
+            if (false) {
+            	System.out.println("RUNNING TEST1!");
+            	ms.send(new MessageWrapper(NetClient.SocketType.TCP, tcpc.remoteAddr, tcpc.remotePort, new Message.ChatMessage(userId, "TEST 4 HANDLING ERROR MESSAGE")));
+            	Thread.sleep(1000);            	
+            }
             */
             
             // Assignment02 Tests
             
-
             // TEST 1
-            //System.out.println("RUNNING TEST1!");
-            //outQueue.put(new MessageWrapper(MessageWrapper.SocketType.TCP, new Message.ChatMessage(userId, "TEST 1 SEND MESSAGE WHILE HAVING AN ACTIVE LEASE")));
-            //Thread.sleep(1000);
+            if (false) {
+            	System.out.println("RUNNING TEST1!");
+            	ms.send(new MessageWrapper(NetClient.SocketType.TCP, tcpc.remoteAddr, tcpc.remotePort, new Message.ChatMessage(userId, "TEST 1 SEND MESSAGE WHILE HAVING AN ACTIVE LEASE")));
+            	Thread.sleep(1000);            	
+            }
 
             // TEST 2
-            //System.out.println("RUNNING TEST2!");
-            //ms.send(new MessageWrapper(Client.SocketType.UDP, tcpc.remoteAddr, 5252, new Message.ChatMessage(new User.UserId(7777), "TEST 2 ECHO MESSAGE FROM USER")));
-        	//Thread.sleep(1000);
+            if (false) {
+            	System.out.println("RUNNING TEST2!");
+            	ms.send(new MessageWrapper(NetClient.SocketType.UDP, tcpc.remoteAddr, 5252, new Message.ChatMessage(new User.UserId(7777), "TEST 2 ECHO MESSAGE FROM USER")));
+            	Thread.sleep(1000);	
+            }
         	
-            // TEST 3
-            //System.out.println("RUNNING TEST3!");
-            //ms.send(new MessageWrapper(Client.SocketType.TCP, tcpc.remoteAddr, tcpc.remotePort, new Message.ChatMessage(userId, "TEST 3 RENEW LEASE")));
-            //Thread.sleep(1000);
+        	// TEST 3
+            if (true) {
+            	System.out.println("RUNNING TEST3!");
+            	ms.send(new MessageWrapper(NetClient.SocketType.TCP, tcpc.remoteAddr, tcpc.remotePort, new Message.ChatMessage(userId, "TEST 3 RENEW LEASE")));
+            	Thread.sleep(1000);            	
+            }
             
             // TEST 4
-            //System.out.println("RUNNING TEST4!");
-            //ms.send(new MessageWrapper(Client.SocketType.TCP, tcpc.remoteAddr, tcpc.remotePort, new Message.ChatMessage(userId, "TEST 4 LISTEN TO INCOMING MESSAGES AND ECHO SPECIAL MESSAGE")));
-            //Thread.sleep(1000);
+            if (false) {
+            	System.out.println("RUNNING TEST4!");
+            	ms.send(new MessageWrapper(NetClient.SocketType.TCP, tcpc.remoteAddr, tcpc.remotePort, new Message.ChatMessage(userId, "TEST 4 LISTEN TO INCOMING MESSAGES AND ECHO SPECIAL MESSAGE")));
+            	Thread.sleep(1000);            	
+            }
             
             
             Scanner sc = new Scanner(System.in);

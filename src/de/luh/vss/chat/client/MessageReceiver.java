@@ -48,19 +48,28 @@ public class MessageReceiver extends Worker {
 			return -1;
 		}
     	
-    	if (bufferwrp == null) return 0;
-    	   	  	
+    	if (bufferwrp == null || bufferwrp.content.length == 0) return 0;
+    	
+    	//System.out.println(Arrays.toString(bufferwrp.content));
+    	
     	BufferedInputStream bufferedIn = new BufferedInputStream(new ByteArrayInputStream(bufferwrp.content));
     	DataInputStream inputStream = new DataInputStream(bufferedIn);
     	
-    	bufferedIn.mark(1024);
     	try {
-			while(bufferedIn.available() > 0) {
+			while(bufferedIn.available() > 0) {		
 				getMessage(bufferwrp, inputStream);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			try {
+				bufferedIn.close();
+				inputStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
     	
     	return 0;

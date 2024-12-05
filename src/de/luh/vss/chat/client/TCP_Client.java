@@ -11,7 +11,6 @@ import java.net.UnknownHostException;
 
 import de.luh.vss.chat.client.Wrapper.*;
 import de.luh.vss.chat.common.Message;
-import de.luh.vss.chat.common.MessageType;
 import de.luh.vss.chat.common.User.UserId;
 
 public class TCP_Client extends NetClient {
@@ -70,10 +69,12 @@ public class TCP_Client extends NetClient {
         		MessageWrapper prevMsg = sender.getPrevMsg();
         		
         		// FIXME: this resends the previous message on each renewal, although the message could be already sent successfully already.
-				if (prevMsg != null && prevMsg.content.getMessageType() == MessageType.CHAT_MESSAGE) {
+				/*
+        		if (prevMsg != null && prevMsg.content.getMessageType() == MessageType.CHAT_MESSAGE) {
 					System.out.printf("Adding the last message to the Q: '%s'\n", prevMsg.content.toString());
 					sender.send(prevMsg);					
 				}
+				*/
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

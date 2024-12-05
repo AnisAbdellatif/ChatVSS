@@ -4,6 +4,7 @@ package de.luh.vss.chat.client;
 import java.io.IOException;
 
 import de.luh.vss.chat.client.Wrapper.MessageWrapper;
+import de.luh.vss.chat.common.Message;
 import de.luh.vss.chat.common.MessageType;
 
 public class MessageForwarder extends Worker {
@@ -22,9 +23,10 @@ public class MessageForwarder extends Worker {
 			MessageWrapper msgwrp = receiver.getInQueue().take();
 			if (msgwrp.content.getMessageType() != MessageType.CHAT_MESSAGE) return 0;
 			
-			//Message.ChatMessage msg = (Message.ChatMessage) msgwrp.content;
-			//if (!msg.getMessage().startsWith("Timestamp: ")) return 0;
-			if (!msgwrp.content.toString().contains("SPECIAL MESSAGE TEST 4")) return 0;
+			Message.ChatMessage msg = (Message.ChatMessage) msgwrp.content;
+			
+			if (!msg.getMessage().toString().startsWith("Timestamp: ")
+			 && !msgwrp.content.toString().contains("SPECIAL MESSAGE TEST 4")) return 0;
 					
 			System.out.printf("Got new Message to echo: %s\n", msgwrp.content.toString());
 			sender.getOutQueue().put(msgwrp);	

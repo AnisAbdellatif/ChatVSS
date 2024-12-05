@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.util.Arrays;
 
 import de.luh.vss.chat.client.Wrapper.*;
 import de.luh.vss.chat.common.User.UserId;
@@ -42,7 +43,9 @@ public class UDP_Client extends NetClient {
 			try {
 				socket.receive(recvPacket);
 				byte[] buffer = recvPacket.getData();
-				bufferwrp = new ByteArrWrapper(NetClient.SocketType.UDP, recvPacket.getAddress(), recvPacket.getPort(), buffer);
+				// remove tailing 0s
+				byte[] trimmedBuffer = Arrays.copyOf(buffer, recvPacket.getLength());
+				bufferwrp = new ByteArrWrapper(NetClient.SocketType.UDP, recvPacket.getAddress(), recvPacket.getPort(), trimmedBuffer);
 			} catch (Exception e) {
 				if (e instanceof SocketException) {}
 				else e.printStackTrace();
